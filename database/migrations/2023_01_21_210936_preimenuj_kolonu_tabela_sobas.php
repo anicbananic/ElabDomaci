@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('iznajmljivanjes', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('gost_id');
-            $table->foreignId('soba_id');
-            $table->string('datum_od');
-            $table->string('datum_do');
-            $table->timestamps();
+        Schema::table('sobas', function (Blueprint $table) {
+           
+            $table->renameColumn('broj_ljudi', 'kapacitet');
+           
         });
     }
 
@@ -30,6 +27,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iznajmljivanjes');
+        Schema::table('sobas', function (Blueprint $table) {
+           
+            $table->renameColumn('kapacitet', 'broj_ljudi');
+           
+        });
     }
 };

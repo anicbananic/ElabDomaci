@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('gosts', function (Blueprint $table) {
             $table->id();
+            $table->string('ime');
+            $table->string('prezime');
+            $table->string('br_lk');
             $table->timestamps();
         });
     }
